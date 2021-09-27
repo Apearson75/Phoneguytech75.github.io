@@ -913,7 +913,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "27";
+	app.meta.h["build"] = "57";
 	app.meta.h["company"] = "HaxeFlixel";
 	app.meta.h["file"] = "TurnBasedRPG";
 	app.meta.h["name"] = "TurnBasedRPG";
@@ -3413,6 +3413,9 @@ DocumentClass.__super__ = Main;
 DocumentClass.prototype = $extend(Main.prototype,{
 	__class__: DocumentClass
 });
+var AssetPaths = function() { };
+$hxClasses["AssetPaths"] = AssetPaths;
+AssetPaths.__name__ = "AssetPaths";
 var EReg = function(r,opt) {
 	this.r = new RegExp(r,opt.split("u").join(""));
 };
@@ -3606,7 +3609,7 @@ ManifestResources.init = function(config) {
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$nokiafc22_$ttf);
 	openfl_text_Font.registerFont(_$_$ASSET_$_$OPENFL_$_$flixel_$fonts_$monsterrat_$ttf);
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy34:assets%2Fdata%2Fdata-goes-here.txty4:sizezy4:typey4:TEXTy2:idR1y7:preloadtgoR0y36:assets%2Fimages%2Fimages-go-here.txtR2zR3R4R5R7R6tgoR0y36:assets%2Fmusic%2Fmusic-goes-here.txtR2zR3R4R5R8R6tgoR0y36:assets%2Fsounds%2Fsounds-go-here.txtR2zR3R4R5R9R6tgoR2i2114R3y5:MUSICR5y26:flixel%2Fsounds%2Fbeep.mp3y9:pathGroupaR11y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR2i39706R3R10R5y28:flixel%2Fsounds%2Fflixel.mp3R12aR14y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR2i5794R3y5:SOUNDR5R13R12aR11R13hgoR2i33629R3R16R5R15R12aR14R15hgoR2i15744R3y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR5y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR2i29724R3R17R18y36:__ASSET__flixel_fonts_monsterrat_ttfR5y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR0y33:flixel%2Fimages%2Fui%2Fbutton.pngR2i519R3y5:IMAGER5R23R6tgoR0y36:flixel%2Fimages%2Flogo%2Fdefault.pngR2i3280R3R24R5R25R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:sizei8431y4:typey5:SOUNDy2:idy14:assets%2Fa.oggy9:pathGroupaR4hy7:preloadtgoy4:pathy34:assets%2Fdata%2Fdata-goes-here.txtR0zR1y4:TEXTR3R8R6tgoR0i3964R1y5:MUSICR3y14:assets%2Fe.mp3R5aR11hR6tgoR0i4745R1R10R3y14:assets%2Fi.mp3R5aR12hR6tgoR7y36:assets%2Fimages%2Fimages-go-here.txtR0zR1R9R3R13R6tgoR7y36:assets%2Fmusic%2Fmusic-goes-here.txtR0zR1R9R3R14R6tgoR0i5267R1R10R3y14:assets%2Fo.mp3R5aR15hR6tgoR7y36:assets%2Fsounds%2Fsounds-go-here.txtR0zR1R9R3R16R6tgoR0i2114R1R10R3y26:flixel%2Fsounds%2Fbeep.mp3R5aR17y26:flixel%2Fsounds%2Fbeep.ogghR6tgoR0i39706R1R10R3y28:flixel%2Fsounds%2Fflixel.mp3R5aR19y28:flixel%2Fsounds%2Fflixel.ogghR6tgoR0i5794R1R2R3R18R5aR17R18hgoR0i33629R1R2R3R20R5aR19R20hgoR0i15744R1y4:FONTy9:classNamey35:__ASSET__flixel_fonts_nokiafc22_ttfR3y30:flixel%2Ffonts%2Fnokiafc22.ttfR6tgoR0i29724R1R21R22y36:__ASSET__flixel_fonts_monsterrat_ttfR3y31:flixel%2Ffonts%2Fmonsterrat.ttfR6tgoR7y33:flixel%2Fimages%2Fui%2Fbutton.pngR0i519R1y5:IMAGER3R27R6tgoR7y36:flixel%2Fimages%2Flogo%2Fdefault.pngR0i3280R1R28R3R29R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -4747,32 +4750,6 @@ PlayState.prototype = $extend(flixel_FlxState.prototype,{
 		flixel_FlxState.prototype.create.call(this);
 	}
 	,update: function(elapsed) {
-		var _this = flixel_FlxG.mouse._leftButton;
-		if(_this.current == 1 || _this.current == 2) {
-			var blueSquare = new flixel_FlxSprite();
-			blueSquare.makeGraphic(50,50,-16776961);
-			this.add(blueSquare);
-			blueSquare.screenCenter();
-		}
-		if(flixel_FlxG.mouse._leftButton.current == -1) {
-			var whiteSquare = new flixel_FlxSprite();
-			whiteSquare.makeGraphic(50,50,-1);
-			this.add(whiteSquare);
-			whiteSquare.screenCenter();
-		}
-		var _this = flixel_FlxG.mouse._rightButton;
-		if(_this.current == 1 || _this.current == 2) {
-			var redSquare = new flixel_FlxSprite();
-			redSquare.makeGraphic(50,50,-65536);
-			this.add(redSquare);
-			redSquare.screenCenter();
-		}
-		if(flixel_FlxG.mouse._rightButton.current == -1) {
-			var whiteSquare = new flixel_FlxSprite();
-			whiteSquare.makeGraphic(50,50,-1);
-			this.add(whiteSquare);
-			whiteSquare.screenCenter();
-		}
 		var _g = 0;
 		var _g1 = flixel_FlxG.touches.list;
 		while(_g < _g1.length) {
@@ -4791,6 +4768,22 @@ PlayState.prototype = $extend(flixel_FlxState.prototype,{
 				this.add(whiteSquare);
 				whiteSquare.screenCenter();
 			}
+		}
+		var _this = flixel_FlxG.keys.justPressed;
+		if(_this.keyManager.checkStatus(38,_this.status)) {
+			flixel_FlxG.sound.playMusic("assets/a.ogg",1,false);
+		}
+		var _this = flixel_FlxG.keys.justPressed;
+		if(_this.keyManager.checkStatus(40,_this.status)) {
+			flixel_FlxG.sound.playMusic("assets/o.mp3",1,false);
+		}
+		var _this = flixel_FlxG.keys.justPressed;
+		if(_this.keyManager.checkStatus(39,_this.status)) {
+			flixel_FlxG.sound.playMusic("assets/i.mp3",1,false);
+		}
+		var _this = flixel_FlxG.keys.justPressed;
+		if(_this.keyManager.checkStatus(37,_this.status)) {
+			flixel_FlxG.sound.playMusic("assets/e.mp3",1,false);
 		}
 		flixel_FlxState.prototype.update.call(this,elapsed);
 	}
@@ -69128,7 +69121,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 125840;
+	this.version = 388108;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -116254,6 +116247,14 @@ openfl_display_DisplayObject.__tempStack = new lime_utils_ObjectPool(function() 
 },function(stack) {
 	stack.set_length(0);
 });
+AssetPaths.a__ogg = "assets/a.ogg";
+AssetPaths.data_goes_here__txt = "assets/data/data-goes-here.txt";
+AssetPaths.e__mp3 = "assets/e.mp3";
+AssetPaths.i__mp3 = "assets/i.mp3";
+AssetPaths.images_go_here__txt = "assets/images/images-go-here.txt";
+AssetPaths.music_goes_here__txt = "assets/music/music-goes-here.txt";
+AssetPaths.o__mp3 = "assets/o.mp3";
+AssetPaths.sounds_go_here__txt = "assets/sounds/sounds-go-here.txt";
 openfl_text_Font.__fontByName = new haxe_ds_StringMap();
 openfl_text_Font.__registeredFonts = [];
 flixel_FlxBasic.idEnumerator = 0;
